@@ -25,3 +25,9 @@ export const login = (user) => {
     })
     .catch((err) => console.log(err.response));
 };
+
+// @desc Logout User
+export const logoutUser = () => {
+  localStorage.removeItem('jwtToken');
+  store.dispatch(setCurrentUser(null));
+};

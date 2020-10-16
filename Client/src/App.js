@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import './App.css';
 import Navbar from './Components/Navbar';
 import Home from './Pages/Home';
@@ -8,8 +8,10 @@ import Register from './Components/Register';
 import { setCurrentUser } from './redux/user/user.actions';
 import store from './redux/store';
 import Login from './Components/Login';
+import Dashboard from './Pages/Dashboard';
+import { connect } from 'react-redux';
 
-function App() {
+function App({ user }) {
   useEffect(() => {
     if (localStorage.jwtToken) {
       const token = localStorage.jwtToken;
@@ -21,12 +23,36 @@ function App() {
     <div>
       <Navbar />
       <Switch>
-        <Route exact path="/" component={Home} />
-        <Route path="/register" component={Register} />
-        <Route path="/login" component={Login} />
+        <Route
+          exact
+          path="/"
+          render={() =>
+            user.currentUser ? <Redirect to="/dashboard" /> : <Home />
+          }
+        />
+        <Route
+          exact
+          path="/register"
+          render={() =>
+            user.currentUser ? <Redirect to="/dashboard" /> : <Register />
+          }
+        />
+        <Route
+          exact
+          path="/Login"
+          render={() =>
+            user.currentUser ? <Redirect to="/dashboard" /> : <Login />
+          }
+        />
+
+        {user.currentUser ? <Dashboard /> : <Redirect to="/" />}
       </Switch>
     </div>
   );
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+  user: state.user,
+});
+
+export default connect(mapStateToProps, null)(App);

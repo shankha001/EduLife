@@ -1,11 +1,12 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
-import { Link } from "react-router-dom";
-
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { logoutUser } from '../helper';
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -18,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Navbar() {
+function Navbar({ user }) {
   const classes = useStyles();
 
   return (
@@ -28,14 +29,29 @@ export default function Navbar() {
           <Typography variant="h6" className={classes.title}>
             EduLife
           </Typography>
-          <Link to="/register">
-            <Button color="inherit">Register </Button>
-          </Link>
-          <Link to="/login">
-            <Button color="inherit">Login</Button>
-          </Link>
+          {user.currentUser ? (
+            <Button onClick={logoutUser} variant="contained">
+              Logout
+            </Button>
+          ) : (
+            <div>
+              <Button component={Link} to="/register" color="inherit">
+                Register{' '}
+              </Button>
+
+              <Button component={Link} to="/login" color="inherit">
+                Login
+              </Button>
+            </div>
+          )}
         </Toolbar>
       </AppBar>
     </div>
   );
 }
+
+const mapStateToProps = (state) => ({
+  user: state.user,
+});
+
+export default connect(mapStateToProps, null)(Navbar);
