@@ -5,6 +5,7 @@ import Navbar from "./Components/Navbar";
 import Home from "./Pages/Home";
 
 import Register from "./Components/Register";
+import Login from "./Components/Login";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/register" component={Register} />
+        <Route path="/login" component={Login} />
       </Switch>
     </div>
   );

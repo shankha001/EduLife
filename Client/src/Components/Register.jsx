@@ -7,6 +7,7 @@ import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import Form from "./Form";
+import { Paper } from "@material-ui/core";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -45,6 +46,13 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     backgroundColor: theme.palette.background.paper,
+    textAlign: "center",
+    width: "100%",
+    maxWidth: "500px",
+    position: "absolute",
+    left: "50%",
+    top: "50%",
+    transform: "translate(-50%, -50%)",
   },
 }));
 
@@ -57,8 +65,8 @@ export default function Register() {
   };
 
   return (
-    <div className={classes.root}>
-      <AppBar position="static">
+    <Paper elevation={5} className={classes.root}>
+      <AppBar style={{ alignItems: "center" }} position="static">
         <Tabs
           value={value}
           onChange={handleChange}
@@ -70,17 +78,25 @@ export default function Register() {
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        Student Form
+        <div className={classes.images}>
+          <img
+            style={{ width: "8%" }}
+            src={require("../Assets/students-cap.png")}
+          />
+        </div>
         <Form />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Teacher Form
+        <img
+          style={{ width: "8%" }}
+          src={require("../Assets/teacher-at-the-blackboard.png")}
+        />
         <Form />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Parent Form
+        <img style={{ width: "8%" }} src={require("../Assets/parents.png")} />
         <Form />
       </TabPanel>
-    </div>
+    </Paper>
   );
 }
