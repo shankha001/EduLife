@@ -33,7 +33,7 @@ function Form(props) {
     <React.Fragment>
       <form className={classes.form} noValidate>
         <Grid container spacing={2}>
-          {type == 'signin' ? null : (
+          {type === 'signin' ? null : (
             <React.Fragment>
               <Grid item xs={12} sm={6}>
                 <TextField
@@ -85,22 +85,28 @@ function Form(props) {
             />
           </Grid>
         </Grid>
-        <Button
-          type="submit"
-          fullWidth
-          variant="contained"
-          color="primary"
-          className={classes.submit}
-        >
-          Sign Up
-        </Button>
-        <Grid container justify="flex-end">
-          <Grid item>
-            <Link href="/login" variant="body2">
-              Already have an account? Sign in
-            </Link>
-          </Grid>
-        </Grid>
+
+        {type === 'signin' ? (
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+          >
+            Sign In
+          </Button>
+        ) : (
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+          >
+            Sign Up
+          </Button>
+        )}
       </form>
     </React.Fragment>
   );
