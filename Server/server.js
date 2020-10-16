@@ -8,6 +8,7 @@ const passport = require('passport');
 const PORT = process.env.PORT || 5000;
 
 const users = require('./routes/auth/users');
+const courses = require('./routes/courses');
 
 //===MongoDB===//
 mongoose
@@ -32,6 +33,7 @@ app.get('/', (req, res) => {
   res.send({ msg: 'Welcome to the Backend Server' });
 });
 app.use('/auth/users', users);
+app.use('/courses', courses);
 
 app.listen(PORT, () => {
   console.log(`Server started on PORT:${PORT}`);

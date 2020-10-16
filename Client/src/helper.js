@@ -31,3 +31,10 @@ export const logoutUser = () => {
   localStorage.removeItem('jwtToken');
   store.dispatch(setCurrentUser(null));
 };
+
+// @route POST /courses/create
+// @desc Create Course
+
+export const createCourse = (name, desc) => {
+  //
+};
