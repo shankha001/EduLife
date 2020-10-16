@@ -10,6 +10,7 @@ import store from './redux/store';
 import Login from './Components/Login';
 import Dashboard from './Pages/Dashboard';
 import { connect } from 'react-redux';
+import Course from './Components/Course';
 
 function App({ user }) {
   useEffect(() => {
@@ -44,6 +45,11 @@ function App({ user }) {
             user.currentUser ? <Redirect to="/dashboard" /> : <Login />
           }
         />
+        {user.currentUser ? (
+          <Route path="/dashboard/course/:id" component={Course} />
+        ) : (
+          <Home />
+        )}
 
         {user.currentUser ? <Dashboard /> : <Redirect to="/" />}
       </Switch>
