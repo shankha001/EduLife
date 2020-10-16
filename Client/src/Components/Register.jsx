@@ -1,14 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
-import Form from './Form';
-import { Paper } from '@material-ui/core';
-import Container from '@material-ui/core/Container';
+import React from "react";
+import PropTypes from "prop-types";
+import { makeStyles } from "@material-ui/core/styles";
+import AppBar from "@material-ui/core/AppBar";
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
+import Typography from "@material-ui/core/Typography";
+import Box from "@material-ui/core/Box";
+import Form from "./Form";
+import { Paper } from "@material-ui/core";
+import Container from "@material-ui/core/Container";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -39,7 +39,7 @@ TabPanel.propTypes = {
 function a11yProps(index) {
   return {
     id: `simple-tab-${index}`,
-    'aria-controls': `simple-tabpanel-${index}`,
+    "aria-controls": `simple-tabpanel-${index}`,
   };
 }
 
@@ -47,16 +47,16 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     backgroundColor: theme.palette.background.paper,
-    textAlign: 'center',
-    width: '100%',
+    textAlign: "center",
+    width: "100%",
     marginTop: theme.spacing(2),
     padding: theme.spacing(2),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
   },
   images: {
-    width: '40px',
+    width: "40px",
   },
 }));
 
@@ -72,7 +72,7 @@ export default function Register() {
     <Container className={classes.root} maxWidth="xs">
       <Paper elevation={5}>
         <AppBar
-          style={{ alignItems: 'center' }}
+          style={{ alignItems: "center" }}
           position="static"
           component="main"
           maxWidth="xs"
@@ -91,7 +91,8 @@ export default function Register() {
           <div>
             <img
               className={classes.images}
-              src={require('../Assets/students-cap.png')}
+              src={require("../Assets/students-cap.png")}
+              alt="Student"
             />
           </div>
           <Form />
@@ -99,14 +100,16 @@ export default function Register() {
         <TabPanel value={value} index={1}>
           <img
             className={classes.images}
-            src={require('../Assets/teacher-at-the-blackboard.png')}
+            src={require("../Assets/teacher-at-the-blackboard.png")}
+            alt="Teacher"
           />
           <Form />
         </TabPanel>
         <TabPanel value={value} index={2}>
           <img
             className={classes.images}
-            src={require('../Assets/parents.png')}
+            src={require("../Assets/parents.png")}
+            alt="Parents"
           />
           <Form />
         </TabPanel>
