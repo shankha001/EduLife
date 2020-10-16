@@ -6,7 +6,7 @@
   "scripts": {
     "client": "npm start --prefix Client",
     "server": "cd Server && npm start",
-    "start": "concurrently \"npm run client\" \"npm run server\""  
+    "start": "concurrently \"npm run client\" \"npm run server\""
   },
   "repository": {
     "type": "git",
