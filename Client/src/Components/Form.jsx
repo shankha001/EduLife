@@ -52,6 +52,7 @@ function Form(props) {
         const newUser = {
           name: fullname,
           email: details.email,
+          role: 'parent',
           password: details.password,
         };
         register(newUser);
@@ -59,6 +60,7 @@ function Form(props) {
         const newUser = {
           name: fullname,
           email: details.email,
+          role: 'student',
           password: details.password,
         };
         register(newUser);
@@ -66,6 +68,7 @@ function Form(props) {
         const newUser = {
           name: fullname,
           email: details.email,
+          role: 'teacher',
           password: details.password,
         };
         register(newUser);
