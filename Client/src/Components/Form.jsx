@@ -5,6 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import { useState } from 'react';
 import { register } from '../helper';
+import { login } from '../helper';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -38,14 +39,17 @@ function Form(props) {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    // console.log(value);
     setDetails((prevState) => ({ ...prevState, [name]: value }));
     console.log(details);
   };
   const handleSubmit = (e) => {
     e.preventDefault();
     if (type === 'login') {
-      alert('helllo');
+      const loginUser = {
+        email: details.email,
+        password: details.password,
+      };
+      login(loginUser);
     } else {
       let fullname = details.fname + details.lname;
       if (type === 'parentReg') {
