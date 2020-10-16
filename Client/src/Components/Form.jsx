@@ -1,24 +1,24 @@
-import React from "react";
-import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
-
-import Grid from "@material-ui/core/Grid";
-import { makeStyles } from "@material-ui/core/styles";
-import { useState } from "react";
+import React from 'react';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import Grid from '@material-ui/core/Grid';
+import { makeStyles } from '@material-ui/core/styles';
+import { useState } from 'react';
+import { register } from '../helper';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
   },
   avatar: {
     margin: theme.spacing(1),
     backgroundColor: theme.palette.secondary.main,
   },
   form: {
-    width: "100%", // Fix IE 11 issue.
+    width: '100%', // Fix IE 11 issue.
     marginTop: theme.spacing(5),
   },
   submit: {
@@ -30,38 +30,60 @@ function Form(props) {
   const classes = useStyles();
   const { type } = props;
   const [details, setDetails] = useState({
-    fname: "",
-    lname: "",
-    email: "",
-    password: "",
+    fname: '',
+    lname: '',
+    email: '',
+    password: '',
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     // console.log(value);
     setDetails((prevState) => ({ ...prevState, [name]: value }));
-    // console.log(details);
+    console.log(details);
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newUser = {
-      fname: details.fname,
-      lname: details.lname,
-      email: details.email,
-      password: details.password,
-    };
+    if (type === 'login') {
+      alert('helllo');
+    } else {
+      let fullname = details.fname + details.lname;
+      if (type === 'parentReg') {
+        const newUser = {
+          name: fullname,
+          email: details.email,
+          password: details.password,
+        };
+        register(newUser);
+      } else if (type === 'studentReg') {
+        const newUser = {
+          name: fullname,
+          email: details.email,
+          password: details.password,
+        };
+        register(newUser);
+      } else if (type === 'teacherReg') {
+        const newUser = {
+          name: fullname,
+          email: details.email,
+          password: details.password,
+        };
+        register(newUser);
+      }
+    }
+
     //login(newUser);
   };
   return (
     <React.Fragment>
       <form className={classes.form} onSubmit={handleSubmit} noValidate>
         <Grid container spacing={2}>
-          {type === "signin" ? null : (
+          {type === 'login' ? null : (
             <React.Fragment>
               <Grid item xs={12} sm={6}>
                 <TextField
                   autoComplete="fname"
-                  name="firstName"
+                  name="fname"
                   variant="outlined"
                   required
                   fullWidth
@@ -79,7 +101,7 @@ function Form(props) {
                   fullWidth
                   id="lastName"
                   label="Last Name"
-                  name="lastName"
+                  name="lname"
                   autoComplete="lname"
                   onChange={handleChange}
                   value={details.lname}
@@ -97,6 +119,8 @@ function Form(props) {
               label="Email Address"
               name="email"
               autoComplete="email"
+              onChange={handleChange}
+              value={details.email}
             />
           </Grid>
           <Grid item xs={12}>
@@ -115,7 +139,7 @@ function Form(props) {
           </Grid>
         </Grid>
 
-        {type === "signin" ? (
+        {type === 'login' ? (
           <Button
             type="submit"
             fullWidth
