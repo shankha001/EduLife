@@ -17,9 +17,11 @@ import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    maxWidth: '230px',
-    maxHeight: '300px',
+    width: '230px',
+    height: '300px',
     margin: '15px',
+    border: '1px solid grey',
+    position: 'relative',
   },
   title: {
     color: 'orangered',
@@ -48,11 +50,18 @@ const useStyles = makeStyles((theme) => ({
     width: theme.spacing(7),
     height: theme.spacing(7),
   },
+  cardFooter: {
+    position: 'absolute',
+    bottom: '0',
+    width: '100%',
+    margin: '-10px',
+  },
 }));
 
-export default function CourseCard() {
+export default function CourseCard(props) {
   const classes = useStyles();
-
+  const { name, description, teacherName } = props.course;
+  console.log(props.course.teacherName);
   return (
     <Card className={classes.root}>
       <CardHeader
@@ -62,8 +71,8 @@ export default function CourseCard() {
             <MoreVertIcon />
           </IconButton>
         }
-        title="Maths"
-        subheader="Mr. XYZ"
+        title={name}
+        subheader={teacherName}
       />
       <div className={classes.media_container}>
         <CardMedia
@@ -76,10 +85,10 @@ export default function CourseCard() {
 
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum quis
+          {description}
         </Typography>
       </CardContent>
-      <CardActions disableSpacing>
+      <CardActions className={classes.cardFooter} disableSpacing>
         <IconButton aria-label="add to favorites">
           <FavoriteIcon />
         </IconButton>

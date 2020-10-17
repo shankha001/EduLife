@@ -1,9 +1,9 @@
 import React, { Suspense } from 'react';
 import CourseCard from '../Components/CourseCard';
 import { makeStyles } from '@material-ui/core/styles';
-import { fetchProfileData } from './studentData';
+import { fetchCourseData } from './studentData';
 
-const resource = fetchProfileData();
+const resource = fetchCourseData();
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -11,30 +11,36 @@ const useStyles = makeStyles((theme) => ({
     flexWrap: 'wrap',
     margin: '10px',
   },
+  card: {
+    width: '100%',
+  },
 }));
 
 function Student() {
   const classes = useStyles();
   return (
-    <div className={classes.root}>
-      <CourseCard />
-
-      <Suspense fallback={<h1>Loading posts...</h1>}>
-        <ProfileTimeline />
-      </Suspense>
-    </div>
+    <Suspense fallback={<h1>Loading posts...</h1>}>
+      <Courses />
+    </Suspense>
   );
 }
 
-function ProfileTimeline() {
+function Courses() {
+  const classes = useStyles();
   const courses = resource.courses.read();
-  console.log(courses);
+  // console.log(courses);
   return (
-    <ul>
+    <div className={classes.root}>
       {courses.map((course) => (
-        <li key={course.id}>{course.name}</li>
+        <div>
+          <CourseCard
+            className={classes.card}
+            key={course.id}
+            course={course}
+          />
+        </div>
       ))}
-    </ul>
+    </div>
   );
 }
 

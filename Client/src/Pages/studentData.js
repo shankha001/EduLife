@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export function fetchProfileData() {
+export function fetchCourseData() {
   let coursesPromise = fetchCourses();
   return {
     courses: wrapPromise(coursesPromise),
