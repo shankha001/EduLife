@@ -5,6 +5,7 @@ const courseSchema = new mongoose.Schema({
   description: String,
   teacherName: String,
   teacherId: String,
+  date: { type: Date, default: Date.now },
 });
 
 module.exports = mongoose.model('Course', courseSchema);

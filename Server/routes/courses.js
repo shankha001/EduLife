@@ -27,5 +27,13 @@ router.post('/create', (req, res) => {
   });
 });
 
+// @route POST /courses/get
+// @desc Get Course
+
+router.post('/get', (req, res) => {
+  Course.find({}, (err, courses) => {
+    if (!err) res.json(courses);
+  });
+});
 // @desc Register User
 module.exports = router;
