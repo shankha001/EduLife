@@ -83,7 +83,7 @@ function Form(props) {
   };
   return (
     <React.Fragment>
-      <form className={classes.form} onSubmit={handleSubmit} noValidate>
+      <form className={classes.form} onSubmit={handleSubmit}>
         <Grid container spacing={2}>
           {type === 'login' ? null : (
             <React.Fragment>
