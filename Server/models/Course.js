@@ -9,7 +9,7 @@ const courseSchema = new mongoose.Schema({
   chats: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Chats',
+      ref: 'Chat',
     },
   ],
 });

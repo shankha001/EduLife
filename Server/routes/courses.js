@@ -35,5 +35,14 @@ router.post('/get', (req, res) => {
     if (!err) res.json(courses);
   });
 });
-// @desc Register User
+
+// @route POST /courses/getTeachers/:tid
+// @desc Get Teachers Courses
+
+router.post('/getTeachers/:tid', (req, res) => {
+  Course.find({ teacherId: req.params.tid }, (err, courses) => {
+    if (!err) res.json(courses);
+  });
+});
+
 module.exports = router;
