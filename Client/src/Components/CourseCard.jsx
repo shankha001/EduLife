@@ -60,8 +60,8 @@ const useStyles = makeStyles((theme) => ({
 
 export default function CourseCard(props) {
   const classes = useStyles();
-  const { name, description, teacherName } = props.course;
-  console.log(props.course.teacherName);
+  const { name, description, teacherName, _id } = props.course;
+  // console.log(props.course._id);
   return (
     <Card className={classes.root}>
       <CardHeader
@@ -98,7 +98,7 @@ export default function CourseCard(props) {
 
         <Button
           component={Link}
-          to="/dashboard/course/32123"
+          to={`/dashboard/course/${_id}`}
           className={classes.expand}
         >
           Join

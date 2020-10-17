@@ -9,6 +9,7 @@ const PORT = process.env.PORT || 5000;
 
 const users = require('./routes/auth/users');
 const courses = require('./routes/courses');
+const chats = require('./routes/chats');
 
 //===MongoDB===//
 mongoose
@@ -34,6 +35,7 @@ app.get('/', (req, res) => {
 });
 app.use('/auth/users', users);
 app.use('/courses', courses);
+app.use('/chats', chats);
 
 app.listen(PORT, () => {
   console.log(`Server started on PORT:${PORT}`);
