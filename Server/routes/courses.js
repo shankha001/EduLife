@@ -14,6 +14,8 @@ router.post('/create', (req, res) => {
   const newCourse = new Course({
     name: req.body.name,
     description: req.body.description,
+    teacherName: req.body.teacherName,
+    teacherId: req.body.teacherId,
   });
   newCourse.save((err) => {
     if (err) {

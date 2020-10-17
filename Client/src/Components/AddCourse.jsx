@@ -6,8 +6,9 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-
-export default function AddCourse() {
+import axios from 'axios';
+import { connect } from 'react-redux';
+function AddCourse({ user }) {
   const [open, setOpen] = React.useState(false);
   const [details, setDetails] = useState({
     cname: '',
@@ -18,8 +19,25 @@ export default function AddCourse() {
     setDetails((prevState) => ({ ...prevState, [name]: value }));
     console.log(details);
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    const addCourse = {
+      name: details.cname,
+      description: details.description,
+      teacherName: user.currentUser.name,
+      teacherId: user.currentUser.id,
+    };
+    // @route POST /courses/create
+    // @desc Create Course
+    axios
+      .post('/courses/create', addCourse)
+      .then((res) => {
+        console.log(res);
+        handleClose();
+      })
+      .catch((err) => {
+        throw err;
+      });
   };
   const handleClickOpen = () => {
     setOpen(true);
@@ -81,3 +99,9 @@ export default function AddCourse() {
     </div>
   );
 }
+
+const mapStateToProps = (state) => ({
+  user: state.user,
+});
+
+export default connect(mapStateToProps, null)(AddCourse);
