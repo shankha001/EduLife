@@ -2,15 +2,26 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import { Paper } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
+  row: {
+    margin: '40px auto 20px',
+    flexDirection: 'row',
+    width: '60%',
+  },
   root: {
     display: 'flex',
-    flexWrap: 'wrap',
-    margin: '10px',
   },
-  card: {
-    width: '100%',
+  details: {
+    padding: '0 20px',
+    width: '70%',
+  },
+  date: {
+    paddingTop: '10px',
+    textAlign: 'center',
+    width: '30%',
   },
 }));
 function ViewAnnouncement({ user }) {
@@ -19,29 +30,60 @@ function ViewAnnouncement({ user }) {
   useEffect(() => {
     axios.get(`/announcements/view`).then((res) => setAnnouncements(res.data));
   }, []);
+  var days = [
+    'Sunday',
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
+  ];
+  var months = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ];
   return (
     <React.Fragment>
-      <div className={classes.root}>
+      <Typography
+        style={{ textAlign: 'center', marginTop: '20px' }}
+        variant="h2"
+        component="h2"
+        gutterBottom
+      >
+        Announcements
+      </Typography>
+      <Paper elevation={3} className={classes.row}>
         {' '}
         {announcements.length &&
           announcements.map((announcements) => (
-            <div>
-              <ul>
-                <li>
-                  {' '}
-                  <p>{announcements.name}</p>
-                </li>
-                <li>
-                  {' '}
-                  <p>{announcements.description}</p>
-                </li>
-                <li>
-                  <p>{announcements.date}</p>
-                </li>
-              </ul>
+            <div className={classes.root}>
+              <Typography className={classes.date} variant="subtitle2">
+                {`${new Date(announcements.date).getDate()}, `}
+                {`${months[new Date(announcements.date).getMonth()]} `}
+                {new Date(announcements.date).getFullYear()}
+              </Typography>
+
+              <div className={classes.details}>
+                <Typography variant="h5">{announcements.name}</Typography>
+                <Typography style={{ color: 'grey' }} variant="subtitle1">
+                  {announcements.description}
+                </Typography>
+                <hr />
+              </div>
             </div>
           ))}
-      </div>
+      </Paper>
     </React.Fragment>
   );
 }
