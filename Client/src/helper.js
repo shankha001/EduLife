@@ -8,8 +8,8 @@ import { setCurrentUser } from './redux/user/user.actions';
 export const register = (user) => {
   axios
     .post('/auth/users/register', user)
-    .then((res) => console.log(res))
-    .catch((err) => console.log(err.response.data));
+    .then((res) => alert('Success'))
+    .catch((err) => alert(err.response.data.error));
 };
 
 // // @route POST auth/users/login
@@ -23,7 +23,7 @@ export const login = (user) => {
       const decoded = jwt_decode(token);
       store.dispatch(setCurrentUser(decoded));
     })
-    .catch((err) => console.log(err.response));
+    .catch((err) => alert(err.response));
 };
 
 // @desc Logout User

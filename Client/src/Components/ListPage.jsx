@@ -17,7 +17,7 @@ function ListPage() {
       {images.map((file) => (
         <Grid item xs>
           <Paper elevation={5} style={{ textAlign: 'center', margin: '20px' }}>
-            {console.log(file.filename)}
+            {/* {console.log(file.filename)} */}
 
             <img
               src={'../uploads/image/' + file.filename}

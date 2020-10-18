@@ -62,14 +62,20 @@ app.use(passport.initialize());
 require('./controllers/passport')(passport);
 
 //===ROUTES===//
-app.get('/', (req, res) => {
-  res.send({ msg: 'Welcome to the Backend Server' });
-});
+
 app.use('/auth/users', users);
 app.use('/courses', courses);
 app.use('/chats', chats);
 app.use('/announcements', announcements);
 app.use('/uploads', imageRouter(upload));
+
+//==DEPLOY==//
+
+// app.use(express.static(path.join(__dirname, 'build')));
+
+// app.get('/*', (req, res) => {
+//   res.sendFile(path.join(__dirname, 'build', 'index.html'));
+// });
 
 app.listen(PORT, () => {
   console.log(`Server started on PORT:${PORT}`);

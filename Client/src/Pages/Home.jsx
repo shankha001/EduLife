@@ -12,11 +12,11 @@ function Home() {
     },
   };
   return (
-    <div style={{ height: '90vh' }}>
+    <div style={{ height: '90vh', width: '100%' }}>
       <h1 style={{ textAlign: 'center', textTransform: 'uppercase' }}>
-        Edulife - Hackccelarate 2020 🚀
+        Edulife - Hackccelerate 2020 🚀
       </h1>
-      <Lottie options={defaultOptions} height={500} width={800} />
+      <Lottie options={defaultOptions} style={{ width: '100%' }} />
     </div>
   );
 }

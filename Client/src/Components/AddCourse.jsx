@@ -34,6 +34,7 @@ function AddCourse({ user }) {
       .then((res) => {
         console.log(res);
         handleClose();
+        window.location.reload();
       })
       .catch((err) => {
         throw err;

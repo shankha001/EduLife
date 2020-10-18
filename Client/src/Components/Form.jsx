@@ -40,7 +40,7 @@ function Form(props) {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setDetails((prevState) => ({ ...prevState, [name]: value }));
-    console.log(details);
+    // console.log(details);
   };
   const handleSubmit = (e) => {
     e.preventDefault();

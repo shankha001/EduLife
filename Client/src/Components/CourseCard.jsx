@@ -70,11 +70,6 @@ export default function CourseCard(props) {
     <Paper elevation={5} className={classes.root}>
       <CardHeader
         className={classes.title}
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
-        }
         title={name}
         subheader={teacherName}
       />

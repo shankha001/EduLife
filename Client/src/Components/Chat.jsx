@@ -8,7 +8,6 @@ import {
   Avatar,
   Button,
   IconButton,
-  Link,
   Paper,
   TextareaAutosize,
   Tooltip,
@@ -22,7 +21,7 @@ function Chat({ user }) {
     axios
       .get(`/chats/${id}/view`)
       .then((res) => setChats(res.data))
-      .catch((err) => console.log(err));
+      .catch((err) => alert('err'));
   }, [id]);
 
   const handleClick = () => {
@@ -34,7 +33,7 @@ function Chat({ user }) {
     axios
       .post(`/chats/${id}/new`, newChat)
       .then((res) => window.location.reload())
-      .catch((err) => console.log(err));
+      .catch((err) => alert('err'));
   };
 
   return (
@@ -77,6 +76,11 @@ function Chat({ user }) {
         gutterBottom
       >
         Discussion Forum
+        <img
+          style={{ width: '30px', marginLeft: '10px' }}
+          src={require('../Assets/discussion.png')}
+          alt="Student"
+        />
       </Typography>
       <div style={{ margin: '20px auto', width: '50%' }}>
         <TextareaAutosize

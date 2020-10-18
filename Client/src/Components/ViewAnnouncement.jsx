@@ -66,6 +66,11 @@ function ViewAnnouncement({ user }) {
             gutterBottom
           >
             Announcements
+            <img
+              style={{ width: '40px', marginLeft: '10px' }}
+              src={require('../Assets/announce.png')}
+              alt="Student"
+            />
           </Typography>
           <Paper elevation={3} className={classes.row}>
             {' '}

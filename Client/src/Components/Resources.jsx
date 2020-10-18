@@ -8,12 +8,17 @@ function Resources() {
       <Sidebar />
       <div style={{ width: '100%' }}>
         <Typography
-          style={{ textAlign: 'center', marginTop: '20px' }}
+          style={{ textAlign: 'center', marginTop: '40px' }}
           variant="h4"
           component="h4"
           gutterBottom
         >
           Resources
+          <img
+            style={{ width: '30px', marginLeft: '10px' }}
+            src={require('../Assets/studying.png')}
+            alt="Student"
+          />
         </Typography>
         <ListPage />
       </div>
