@@ -26,10 +26,26 @@ function Teacher({ user }) {
       .then((res) => setCourses(res.data));
   }, [user.currentUser.id]);
   return (
-    <React.Fragment>
-      <AddCourse />
-      <Announcement />
-      <AddResource />
+    <div style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'flex-end',
+          marginTop: '20px',
+        }}
+      >
+        <div style={{ marginRight: '10px' }}>
+          <AddCourse />
+        </div>
+        <div style={{ marginRight: '10px' }}>
+          <Announcement />
+        </div>
+        <div style={{ marginRight: '10px' }}>
+          {' '}
+          <AddResource />
+        </div>
+      </div>
+
       <div className={classes.root}>
         {courses.length &&
           courses.map((course) => (
@@ -42,7 +58,7 @@ function Teacher({ user }) {
             </div>
           ))}
       </div>
-    </React.Fragment>
+    </div>
   );
 }
 const mapStateToProps = (state) => ({

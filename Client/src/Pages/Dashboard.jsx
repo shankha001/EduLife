@@ -15,7 +15,10 @@ const compsad = (role) => {
           <Student />
         </div>
       ) : role === 'teacher' ? (
-        <Teacher />
+        <div style={{ display: 'flex', flexDirection: 'row' }}>
+          <Sidebar />
+          <Teacher />
+        </div>
       ) : role === 'parent' ? (
         <Parent />
       ) : null}
