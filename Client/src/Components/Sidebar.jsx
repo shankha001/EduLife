@@ -15,9 +15,7 @@ function Sidebar() {
       <ListItem component={Link} to="/dashboard" button>
         All Courses
       </ListItem>
-      <ListItem component={Link} to="/dashboard/announcement" button>
-        Favourite Courses
-      </ListItem>
+
       <Divider />
 
       <ListItem component={Link} to="/dashboard/announcement" button>

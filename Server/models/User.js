@@ -7,6 +7,8 @@ const userSchema = new mongoose.Schema({
   email: String,
   role: String,
   password: String,
+  favorite: Array,
+
   date: { type: Date, default: Date.now },
 });
 
