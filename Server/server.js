@@ -8,17 +8,17 @@ const path = require('path');
 
 const passport = require('passport');
 const PORT = process.env.PORT || 5000;
-const methodOverride = require('method-override');
+// const methodOverride = require('method-override');
 // const config = require('./config');
-const multer = require('multer');
-const GridFsStorage = require('multer-gridfs-storage');
-const crypto = require('crypto');
+// const multer = require('multer');
+// const GridFsStorage = require('multer-gridfs-storage');
+// const crypto = require('crypto');
 
 const users = require('./routes/auth/users');
 const courses = require('./routes/courses');
 const chats = require('./routes/chats');
 const announcements = require('./routes/announcements');
-const imageRouter = require('./routes/uploads');
+// const imageRouter = require('./routes/uploads');
 
 //===MongoDB===//
 mongoose
@@ -27,35 +27,35 @@ mongoose
     useUnifiedTopology: true,
   })
   .then(() => console.log('MongoDB connected '));
-mongoose.set('debug', true);
+// mongoose.set('debug', true);
 
 //===MIDDLEWARE===//
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
 
-//===FILE HANDLING===//
-// create storage engine
-const storage = new GridFsStorage({
-  url: process.env.MONGO_URI,
-  file: (req, file) => {
-    return new Promise((resolve, reject) => {
-      crypto.randomBytes(16, (err, buf) => {
-        if (err) {
-          return reject(err);
-        }
-        const filename = buf.toString('hex') + path.extname(file.originalname);
-        const fileInfo = {
-          filename: filename,
-          bucketName: 'uploads',
-        };
-        resolve(fileInfo);
-      });
-    });
-  },
-});
+// //===FILE HANDLING===//
+// // create storage engine
+// const storage = new GridFsStorage({
+//   url: process.env.MONGO_URI,
+//   file: (req, file) => {
+//     return new Promise((resolve, reject) => {
+//       crypto.randomBytes(16, (err, buf) => {
+//         if (err) {
+//           return reject(err);
+//         }
+//         const filename = buf.toString('hex') + path.extname(file.originalname);
+//         const fileInfo = {
+//           filename: filename,
+//           bucketName: 'uploads',
+//         };
+//         resolve(fileInfo);
+//       });
+//     });
+//   },
+// });
 
-const upload = multer({ storage });
+// const upload = multer({ storage });
 
 //===PASSPORT===//
 app.use(passport.initialize());
@@ -69,7 +69,6 @@ app.use('/auth/users', users);
 app.use('/courses', courses);
 app.use('/chats', chats);
 app.use('/announcements', announcements);
-app.use('/uploads', imageRouter(upload));
 
 app.listen(PORT, () => {
   console.log(`Server started on PORT:${PORT}`);

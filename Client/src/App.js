@@ -11,6 +11,7 @@ import Login from './Components/Login';
 import Dashboard from './Pages/Dashboard';
 import { connect } from 'react-redux';
 import Course from './Components/Course';
+import ViewAnnouncement from './Components/ViewAnnouncement';
 
 function App({ user }) {
   useEffect(() => {
@@ -47,6 +48,11 @@ function App({ user }) {
         />
         {user.currentUser ? (
           <Route path="/dashboard/course/:id" component={Course} />
+        ) : (
+          <Home />
+        )}
+        {user.currentUser ? (
+          <Route path="/dashboard/announcement" component={ViewAnnouncement} />
         ) : (
           <Home />
         )}

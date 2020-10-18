@@ -12,7 +12,7 @@ import { red } from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import { Button } from '@material-ui/core';
+import { Button, Paper } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
@@ -20,7 +20,6 @@ const useStyles = makeStyles((theme) => ({
     width: '230px',
     height: '300px',
     margin: '15px',
-    border: '1px solid grey',
     position: 'relative',
   },
   title: {
@@ -56,6 +55,11 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     margin: '-10px',
   },
+  fav: {
+    '&:hover': {
+      color: ' red !important',
+    },
+  },
 }));
 
 export default function CourseCard(props) {
@@ -63,7 +67,7 @@ export default function CourseCard(props) {
   const { name, description, teacherName, _id } = props.course;
   // console.log(props.course._id);
   return (
-    <Card className={classes.root}>
+    <Paper elevation={5} className={classes.root}>
       <CardHeader
         className={classes.title}
         action={
@@ -89,7 +93,7 @@ export default function CourseCard(props) {
         </Typography>
       </CardContent>
       <CardActions className={classes.cardFooter} disableSpacing>
-        <IconButton aria-label="add to favorites">
+        <IconButton className={classes.fav} aria-label="add to favorites">
           <FavoriteIcon />
         </IconButton>
         <IconButton aria-label="share">
@@ -104,6 +108,6 @@ export default function CourseCard(props) {
           Join
         </Button>
       </CardActions>
-    </Card>
+    </Paper>
   );
 }

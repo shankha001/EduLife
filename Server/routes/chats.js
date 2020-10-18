@@ -4,13 +4,14 @@ const Chat = require('../models/Chat');
 const Course = require('../models/Course');
 
 // @route POST chats/:courseid/new
-// @desc new note
+// @desc new chat
 
 router.post('/:courseid/new', async (req, res) => {
   const course = await Course.findOne({ _id: req.params.courseid });
 
   const newChat = new Chat({
-    user: req.body.user,
+    userId: req.body.userId,
+    userName: req.body.userName,
     msg: req.body.msg,
 
     course: course._id,
@@ -23,13 +24,14 @@ router.post('/:courseid/new', async (req, res) => {
   res.send(newChat);
 });
 
-// @route POST notes/:noteid/view
-// @desc view note
-router.get('/:noteid/view', async (req, res) => {
-  const popNotes = await User.findOne({ _id: req.params.noteid }).populate(
-    'notes'
+// @route POST chats/:courseid/view
+// @desc view chats
+router.get('/:courseid/view', async (req, res) => {
+  const popChats = await Course.findOne({ _id: req.params.courseid }).populate(
+    'chats'
   );
-  res.json(popNotes.notes);
+
+  res.json(popChats.chats);
 });
 
 module.exports = router;
