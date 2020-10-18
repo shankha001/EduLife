@@ -6,11 +6,11 @@ function Resources() {
   return (
     <div style={{ display: 'flex', flexDirection: 'row' }}>
       <Sidebar />
-      <div>
+      <div style={{ width: '100%' }}>
         <Typography
           style={{ textAlign: 'center', marginTop: '20px' }}
-          variant="h2"
-          component="h2"
+          variant="h4"
+          component="h4"
           gutterBottom
         >
           Resources

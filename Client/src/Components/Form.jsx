@@ -51,7 +51,7 @@ function Form(props) {
       };
       login(loginUser);
     } else {
-      let fullname = details.fname + details.lname;
+      let fullname = details.fname + ' ' + details.lname;
       if (type === 'parentReg') {
         const newUser = {
           name: fullname,
