@@ -24,7 +24,9 @@ function Sidebar() {
         Annoucements
       </ListItem>
       <Divider />
-      <ListItem button>Resources</ListItem>
+      <ListItem component={Link} to="/dashboard/resources" button>
+        Resources
+      </ListItem>
     </List>
   );
 }

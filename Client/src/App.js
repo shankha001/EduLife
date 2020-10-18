@@ -12,6 +12,7 @@ import Dashboard from './Pages/Dashboard';
 import { connect } from 'react-redux';
 import Course from './Components/Course';
 import ViewAnnouncement from './Components/ViewAnnouncement';
+import Resources from './Components/Resources';
 
 function App({ user }) {
   useEffect(() => {
@@ -53,6 +54,11 @@ function App({ user }) {
         )}
         {user.currentUser ? (
           <Route path="/dashboard/announcement" component={ViewAnnouncement} />
+        ) : (
+          <Home />
+        )}
+        {user.currentUser ? (
+          <Route path="/dashboard/resources" component={Resources} />
         ) : (
           <Home />
         )}
