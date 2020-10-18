@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import AddCourse from '../Components/AddCourse';
 import CourseCard from '../Components/CourseCard';
+import Announcement from '../Components/Announcement';
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
@@ -26,6 +27,7 @@ function Teacher({ user }) {
   return (
     <React.Fragment>
       <AddCourse />
+      <Announcement />
       <div className={classes.root}>
         {' '}
         {courses.length &&
