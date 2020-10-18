@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import { Paper } from '@material-ui/core';
+import Sidebar from './Sidebar';
 
 const useStyles = makeStyles((theme) => ({
   row: {
@@ -55,35 +56,40 @@ function ViewAnnouncement({ user }) {
   ];
   return (
     <React.Fragment>
-      <Typography
-        style={{ textAlign: 'center', marginTop: '20px' }}
-        variant="h2"
-        component="h2"
-        gutterBottom
-      >
-        Announcements
-      </Typography>
-      <Paper elevation={3} className={classes.row}>
-        {' '}
-        {announcements.length &&
-          announcements.map((announcements) => (
-            <div className={classes.root}>
-              <Typography className={classes.date} variant="subtitle2">
-                {`${new Date(announcements.date).getDate()}, `}
-                {`${months[new Date(announcements.date).getMonth()]} `}
-                {new Date(announcements.date).getFullYear()}
-              </Typography>
+      <div style={{ display: 'flex', flexDirection: 'row' }}>
+        <Sidebar />
+        <div style={{ width: '100%' }}>
+          <Typography
+            style={{ textAlign: 'center', marginTop: '20px' }}
+            variant="h2"
+            component="h2"
+            gutterBottom
+          >
+            Announcements
+          </Typography>
+          <Paper elevation={3} className={classes.row}>
+            {' '}
+            {announcements.length &&
+              announcements.map((announcements) => (
+                <div className={classes.root}>
+                  <Typography className={classes.date} variant="subtitle2">
+                    {`${new Date(announcements.date).getDate()}, `}
+                    {`${months[new Date(announcements.date).getMonth()]} `}
+                    {new Date(announcements.date).getFullYear()}
+                  </Typography>
 
-              <div className={classes.details}>
-                <Typography variant="h5">{announcements.name}</Typography>
-                <Typography style={{ color: 'grey' }} variant="subtitle1">
-                  {announcements.description}
-                </Typography>
-                <hr />
-              </div>
-            </div>
-          ))}
-      </Paper>
+                  <div className={classes.details}>
+                    <Typography variant="h5">{announcements.name}</Typography>
+                    <Typography style={{ color: 'grey' }} variant="subtitle1">
+                      {announcements.description}
+                    </Typography>
+                    <hr />
+                  </div>
+                </div>
+              ))}
+          </Paper>
+        </div>
+      </div>
     </React.Fragment>
   );
 }

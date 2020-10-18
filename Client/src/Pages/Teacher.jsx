@@ -23,13 +23,12 @@ function Teacher({ user }) {
     axios
       .post(`/courses/getTeachers/${user.currentUser.id}`)
       .then((res) => setCourses(res.data));
-  }, []);
+  }, [user.currentUser.id]);
   return (
     <React.Fragment>
       <AddCourse />
       <Announcement />
       <div className={classes.root}>
-        {' '}
         {courses.length &&
           courses.map((course) => (
             <div>

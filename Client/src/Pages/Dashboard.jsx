@@ -5,11 +5,15 @@ import Parent from './Parent';
 import Student from './Student';
 import Teacher from './Teacher';
 
+import Sidebar from '../Components/Sidebar';
 const compsad = (role) => {
   return (
     <div>
       {role === 'student' ? (
-        <Student />
+        <div style={{ display: 'flex', flexDirection: 'row' }}>
+          <Sidebar />
+          <Student />
+        </div>
       ) : role === 'teacher' ? (
         <Teacher />
       ) : role === 'parent' ? (
