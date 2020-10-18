@@ -7,6 +7,9 @@ import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logoutUser } from '../helper';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import { IconButton } from '@material-ui/core';
+import HomeIcon from '@material-ui/icons/Home';
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -16,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     flexGrow: 1,
+    textDecoration: 'none',
   },
 }));
 
@@ -26,17 +30,29 @@ function Navbar({ user }) {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-          <Typography variant="h6" className={classes.title}>
+          <Typography
+            variant="h6"
+            className={classes.title}
+            component={Link}
+            to="/"
+            color="inherit"
+          >
             EduLife
           </Typography>
+
           {user.currentUser ? (
-            <Button onClick={logoutUser} variant="contained">
-              Logout
-            </Button>
+            <div>
+              <IconButton component={Link} to="/" color="inherit">
+                <HomeIcon />
+              </IconButton>
+              <IconButton color="inherit" onClick={logoutUser}>
+                <ExitToAppIcon />
+              </IconButton>
+            </div>
           ) : (
             <div>
               <Button component={Link} to="/register" color="inherit">
-                Register{' '}
+                Register
               </Button>
 
               <Button component={Link} to="/login" color="inherit">
