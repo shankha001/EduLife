@@ -13,6 +13,7 @@ import HomeIcon from '@material-ui/icons/Home';
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    color: 'teal',
   },
   menuButton: {
     marginRight: theme.spacing(2),
