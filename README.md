@@ -1,7 +1,5 @@
 # Hackccelerate 2020 - The Learning App
 
-[![Heroku](http://heroku-badge.herokuapp.com/?app=boiling-springs-60148&style=flat&svg=1&root=/)](https://boiling-springs-60148.herokuapp.com/)
-
 ## About Hackccelerate 2020
 
 <p align="center"><img src="https://he-s3.s3.amazonaws.com/media/cache/6c/82/6c82d223257a49d354a529143d3543ca.png"></p>
